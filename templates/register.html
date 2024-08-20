@@ -1,0 +1,56 @@
+{% extends "layout3.html" %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+<h3>Register</h3>
+<hr>
+<form method="post">
+    {{ render_field(form.name) }}
+    {{ render_field(form.surname) }}
+    {{ render_field(form.nickname) }}
+    {{ render_field(form.mail) }}
+
+    <div class="dropdown-container">
+        <label class="dropdown-label">Position</label>
+        <div class="dropdown">
+            <select name="position" multiple size="2">
+                <option value="Goalkeeper (GK)">Goalkeeper (GK)</option>
+                <option value="Right back (RB)">Right back (RB)</option>
+                <option value="Center back (CB)">Center back (CB)</option>
+                <option value="Left back (LB)">Left back (LB)</option>
+                <option value="Defensive midfielder (DM)">Defensive midfielder (DM)</option>
+                <option value="Central midfielder (CM)">Central midfielder (CM)</option>
+                <option value="Right winger (RW)">Right winger (RW)</option>
+                <option value="Striker (ST)">Striker (ST)</option>
+                <option value="Left winger (LW)">Left winger (LW)</option>
+            </select>
+        </div>
+    </div>
+
+    {{ render_field(form.password) }}
+    {{ render_field(form.confirm) }}
+
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+{% endblock body %}
+
+
+
+
+
+
+position = SelectField(
+        "Position",
+        choices=[
+            ("", "Select a Position"),
+            ("Goalkeeper (GK)", "Goalkeeper (GK)"),
+            ("Right back (RB)", "Sağ bek (RB)"),
+            ("Center back (CB)", "Merkez bek (CB)"),
+            ("Left back (LB)", "Sol bek (LB)"),
+            ("Defensive midfielder (DM)", "Defansif orta saha (DM)"),
+            ("Central midfielder (CM)", "Merkez orta saha (CM)"),
+            ("Right winger (RW)", "Sağ kanat (RW)"),
+            ("Striker (ST)", "Forvet (ST)"),
+            ("Left winger (LW)", "Sol kanat (LW)"),
+        ],
+    )

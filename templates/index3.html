@@ -1,0 +1,16 @@
+{% extends "layout3.html" %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h3>Blog Main Page</h3>
+    <p>To create unforgettable experiences, our codes are the work of passion, and our games have a trace of quality.
+    </p>
+</div>
+<ul>
+    {% for article in articles %}
+        <li>Article Id: {{article.id}} - Title: {{article.title}} - Content: {{article.content}}</li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

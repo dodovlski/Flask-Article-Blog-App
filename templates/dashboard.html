@@ -1,0 +1,41 @@
+{% extends "layout3.html" %}
+
+{% block body %}
+
+<h3>Control Panel</h3>
+<hr>
+<small>Welcome, {{session["username"]}}</small>
+<hr>
+
+<a href="/addarticle" class="btn btn-danger">Add Game</a>
+
+{% if articles %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        {% for article in articles %}
+        <tr>
+            <th scope="row">{{article.id}}</th>
+            <td><a href="/article/{{article.id}}">{{article.title}}</a></td>
+            <td>{{article.author}}</td>
+            <td>{{article.created_date}}</td>
+            <td><a href="/edit/{{article.id}}" class="btn btn-success">Update</a></td>
+            <td><a href="/delete/{{article.id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+<div class="alert alert-danger">There are no games yet</div>
+{% endif %}
+{% endblock body %}
